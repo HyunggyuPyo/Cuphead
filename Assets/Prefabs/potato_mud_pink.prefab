@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 655865780755441792}
   m_Layer: 0
   m_Name: potato_mud_pink
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -145,7 +145,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7574553483410402283}
-  - component: {fileID: 9170819513808445153}
+  - component: {fileID: 8661142022079907175}
   m_Layer: 0
   m_Name: Parry
   m_TagString: Parry
@@ -168,8 +168,8 @@ Transform:
   m_Father: {fileID: 4181390945571231400}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &9170819513808445153
-CircleCollider2D:
+--- !u!70 &8661142022079907175
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -181,6 +181,6 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.09, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.89
+  m_Offset: {x: -0.09, y: 0.27}
+  m_Size: {x: 1, y: 1.47}
+  m_Direction: 0
