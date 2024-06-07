@@ -10,6 +10,9 @@ TagManager:
   - ItemDmgUp
   - ItemSpeedUp
   - Weapon
+  - Parry
+  - Enemy
+  - BossTrigger
   layers:
   - Default
   - TransparentFX
@@ -46,4 +49,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Button
+    uniqueID: 1105578575
+    locked: 0
+  - name: BackGround
+    uniqueID: 2019069333
+    locked: 0
+  - name: Object
+    uniqueID: 3853153661
+    locked: 0
+  - name: Event
+    uniqueID: 1543485073
+    locked: 0
+  - name: Ui
+    uniqueID: 1349709799
     locked: 0
