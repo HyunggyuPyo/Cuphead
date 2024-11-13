@@ -32,6 +32,7 @@ public class CarrotRocket : MonoBehaviour
             GameObject carrotRocket = Instantiate(rocket, transform.position, Quaternion.identity);
             carrotRocket.SetActive(false);
             carrotRocket.transform.parent = transform;
+            carrotRocket.transform.localScale = Vector3.one;
             rocketPool.Add(carrotRocket);
         }
     }

@@ -21,6 +21,7 @@ public class PlayerMove : MonoBehaviour
     private bool canParry = false;
     public GameObject parryEff;
     public bool dead = false;
+    public int parryCount = 0;
     //private float temp = 0f;
     #endregion
 
@@ -118,7 +119,7 @@ public class PlayerMove : MonoBehaviour
             {
                 canParry = false;
                 pState = PlayerState.Parry;
-
+                parryCount++;
                 Vector2 jump = new Vector2(0.0f, 0.4f);
                 jump = jump * jumpPower;
                 this.GetComponent<Rigidbody2D>().velocity = jump;

@@ -7,27 +7,28 @@ public class WeaponPooling : MonoBehaviour
     #region
     int pointer;
     List<GameObject> pool;
-    //[SerializeField]
-    //GameObject weaponObj;
-    GameObject weaponObj;
+    List<GameObject> poolB;
     public int size = 10;
     List<GameObject> sparkPool;
-    [SerializeField]
-    GameObject sparkObj;
+    List<GameObject> sparkBPool;
+    //[SerializeField]
+    //GameObject sparkObj;
     int pointerB;
     PlayerInfo playerInfo;
+
+    private bool weaponTab = false;
     #endregion
 
     void Awake()
     {
         playerInfo = FindObjectOfType<PlayerInfo>();
-        weaponObj = playerInfo.playerWeapon;
     }
 
     void Start()
     {
         pointer = 0;
         pool = new List<GameObject>(0);
+        GameObject weaponObj = playerInfo.playerWeapon;
 
         for (int i = 0; i < size; i++)
         {
@@ -39,6 +40,7 @@ public class WeaponPooling : MonoBehaviour
 
         pointerB = 0;
         sparkPool = new List<GameObject>(0);
+        GameObject sparkObj = playerInfo.playerWeapon.GetComponent<WeaponData>().spark;
 
         for (int i = 0; i < size; i++)
         {
@@ -47,23 +49,83 @@ public class WeaponPooling : MonoBehaviour
             obj2.transform.parent = transform;
             sparkPool.Add(obj2);
         }
+
+        poolB = new List<GameObject>(0);
+        GameObject weaponBObj = playerInfo.playerWeaponB;
+
+        for (int i = 0; i < size; i++)
+        {
+            GameObject objB = Instantiate(weaponBObj, Vector2.zero, weaponBObj.transform.rotation);
+            objB.SetActive(false);
+            objB.transform.parent = transform;
+            poolB.Add(objB);
+        }
+
+        sparkBPool = new List<GameObject>(0);
+        GameObject sparkB = playerInfo.playerWeaponB.GetComponent<WeaponData>().spark;
+
+        for (int i = 0; i < size; i++)
+        {
+            GameObject obj2 = Instantiate(sparkB, Vector2.zero, sparkB.transform.rotation);
+            obj2.SetActive(false);
+            obj2.transform.parent = transform;
+            sparkBPool.Add(obj2);
+        }
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if(!weaponTab)
+            {
+                weaponTab = true;
+                playerInfo.WeaponChange(weaponTab);
+            }
+            else
+            {
+                weaponTab = false;
+                playerInfo.WeaponChange(weaponTab);
+            }
+        }
     }
 
     public void SpawnWeapon()
     {
-        if (pointer != pool.Count)
+        if(!weaponTab)
         {
-            pool[pointer].SetActive(true);
-            sparkPool[pointerB].SetActive(true);
-            pointer++;
+            if (pointer != pool.Count)
+            {
+                pool[pointer].SetActive(true);
+                sparkPool[pointerB].SetActive(true);
+                pointer++;
 
+            }
+            else
+            {
+                pointer = 0;
+                pool[pointer].SetActive(true);
+                sparkPool[pointerB].SetActive(true);
+                pointer++;
+            }
         }
         else
         {
-            pointer = 0;
-            pool[pointer].SetActive(true);
-            sparkPool[pointerB].SetActive(true);
-            pointer++;
+            if (pointer != pool.Count)
+            {
+                poolB[pointer].SetActive(true);
+                sparkBPool[pointerB].SetActive(true);
+                pointer++;
+
+            }
+            else
+            {
+                pointer = 0;
+                poolB[pointer].SetActive(true);
+                sparkBPool[pointerB].SetActive(true);
+                pointer++;
+            }
         }
+        
     }
 }

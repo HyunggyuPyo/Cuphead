@@ -12,6 +12,8 @@ public class WPlayerMove : MonoBehaviour
     private float moveSpeed = 3f;
     private float xPos = 0f;
     private float yPos = 0f;
+
+    public GameObject enterImage;
     #endregion
 
     void Awake()
@@ -76,5 +78,30 @@ public class WPlayerMove : MonoBehaviour
             playerAnimator.SetBool("keyVerti", true);
             playerAnimator.SetBool("isWalk", true);
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Icon")
+        {
+            enterImage.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Icon")
+        {
+            enterImage.SetActive(false);
+        }
+    }
+
+    public void CantMove()
+    {
+        moveSpeed = 0f;
+    }
+    public void CanMove()
+    {
+        moveSpeed = 3f;
     }
 }

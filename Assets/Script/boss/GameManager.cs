@@ -21,12 +21,15 @@ public class GameManager : MonoBehaviour
     public bool onionDead = false;
     public bool carrotoDead = false;
 
+    public float timer = 0;
+
     //private int BossHealth = 1235; // potato: 360 , onion: 400 , carrot: 475
     Potato potato;
     Onion onion;
     Carrot carrot;
     //Player player;
     public bool isGamover = false;
+    public bool gameClear = false;
 
     void Awake()
     {
@@ -47,9 +50,24 @@ public class GameManager : MonoBehaviour
         //player = FindObjectOfType<Player>();
     }
 
-    void Start()
+    void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseMenu();
+        }
         
+    }
+
+    void FixedUpdate()
+    {
+        ClearTime();
+    }
+
+    void ClearTime()
+    {
+        if(!gameClear)
+            timer += Time.deltaTime;
     }
 
 
@@ -61,7 +79,6 @@ public class GameManager : MonoBehaviour
     public void PauseMenu()
     {
         Time.timeScale = 0f;
-        panel.SetActive(true);
         pauseUI.SetActive(true);
     }
 
@@ -79,26 +96,12 @@ public class GameManager : MonoBehaviour
         Debug.Log("카드 뜸");
         gameoverUI.SetActive(true);
     }
-    // 다른 스크립트에서 GameManager.instance.OnPlayerDead(); 이런식으로 호출 가능
 
-    //void BossStop()
-    //{
-    //    if(potatoDead == false)
-    //    {
-    //        potato.GameOver();
-    //    }
-    //    else if(onionDead == false)
-    //    {
-    //        onion.GameOver();
-    //    }
-    //    else
-    //    {
-    //        carrot.GameOver();
-    //    }
-    //}
 
     public void GameClear()
     {
+        gameClear = true;
         screenChange.SetActive(true);
     }
+
 }

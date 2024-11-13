@@ -5,7 +5,7 @@ using UnityEngine;
 public class Carrot : MonoBehaviour
 {
     #region
-    private float health = 8f; // 475
+    private float health = 475f; // 475
     public bool dead = false;
     Animator carrotAnimator;
 
@@ -20,6 +20,7 @@ public class Carrot : MonoBehaviour
     public Transform targetPos;
     Coroutine carrotAttack;
     public GameObject clearText;
+    PlayerInfo playerInfo;
 
     GameManager gameManager;
     #endregion
@@ -31,6 +32,7 @@ public class Carrot : MonoBehaviour
         carrotRing = GetComponent<CarrotRing>();
         carrotRocket = GetComponent<CarrotRocket>();
         gameManager = FindObjectOfType<GameManager>();
+        playerInfo = FindObjectOfType<PlayerInfo>();
         targetPos = this.transform;
     }
 
@@ -58,7 +60,7 @@ public class Carrot : MonoBehaviour
     // 보스들 인터페이스 만들어서 상속
     void Hit()
     {
-        health -= 4;
+        health -= playerInfo.pDmg;
         // health -= player.weapon.dmg;
     }
     void Dead()

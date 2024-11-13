@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8439349167326200531}
   - component: {fileID: 8439349167326200528}
   - component: {fileID: -6131897076670292036}
+  - component: {fileID: 6390401923145169617}
   - component: {fileID: 2663036977667870899}
   m_Layer: 0
   m_Name: weapon_01
@@ -121,6 +122,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardPiece: 0
   icon: {fileID: 21300000, guid: 31510b9c61e2e604c86471ef3dd3c70e, type: 3}
+--- !u!114 &6390401923145169617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8439349167326200529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdb7ef46668a19f489cf90f77359892a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spark: {fileID: 9080654924392075469, guid: bb97b65acb14a494d9a994f2beeab830, type: 3}
+  icon: {fileID: 21300000, guid: 31510b9c61e2e604c86471ef3dd3c70e, type: 3}
+  dmg: 4
 --- !u!70 &2663036977667870899
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

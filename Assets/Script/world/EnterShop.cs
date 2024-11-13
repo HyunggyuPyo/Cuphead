@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class EnterShop : MonoBehaviour
 {
@@ -10,7 +9,7 @@ public class EnterShop : MonoBehaviour
         Debug.Log("보스 입장 가능");
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            SceneManager.LoadScene("Shop");
+            LoadSceneController.Instance.LoadScene("Shop");
         }
     }
 }

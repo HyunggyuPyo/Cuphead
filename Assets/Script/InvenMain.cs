@@ -21,18 +21,37 @@ public class InvenMain : MonoBehaviour
     [HideInInspector]
     public GameObject weaponB;
 
+    PlayerInfo playerInfo;
+    //Inventory inven;
+
     void Awake()
     {
-        //playerInfo = FindObjectOfType<PlayerInfo>();
-        //weaponA = playerInfo.weapon[0];
-        weaponA = normalWeapon;
+        //weaponA = normalWeapon;
+        playerInfo = FindObjectOfType<PlayerInfo>();
+        //inven = FindObjectOfType<Inventory>();
+        weaponA = playerInfo.playerWeapon;
     }
 
     void OnEnable()
     {
-        weaponASprite.sprite = weaponA.GetComponent<ShootMove>().icon;
-        weaponBSprite.sprite = weaponB.GetComponent<ShootMove>().icon;
+        IconUPdate();
+        playerInfo.playerWeapon = weaponA;
+        playerInfo.playerWeaponB = weaponB;
     }
+
+    void IconUPdate()
+    {
+        weaponASprite.sprite = weaponA.GetComponent<WeaponData>().icon;
+        if (weaponB.GetComponent<WeaponData>().icon != null)
+        {
+            weaponBSprite.sprite = weaponB.GetComponent<WeaponData>().icon;
+        }
+    }
+
+    //void Update()
+    //{
+    //    ChangeWeapon();
+    //}
 
     public void OpenWeaponA()
     {
@@ -47,5 +66,21 @@ public class InvenMain : MonoBehaviour
         weaponBUI.SetActive(true);
         this.gameObject.SetActive(false);
     }
+
+    //void ChangeWeapon()
+    //{
+    //    if(Input.GetKeyDown(KeyCode.Tab))
+    //    {
+    //        GameObject tempObj = weaponA;
+    //        weaponA = weaponB;
+    //        weaponB = tempObj;
+
+    //        IconUPdate();
+    //        // 이거 메인창 꺼져 있어서 안되느ㄴ듯
+    //        //inven.playerWeapon = weaponA;
+    //        //playerInfo.playerWeapon = weaponA;
+    //        playerInfo.WeaponChange(weaponA);
+    //    }
+    //}
 
 }

@@ -26,7 +26,7 @@ public class WeaponA : MonoBehaviour
         {
             if (playerInfo.weapon[i] != null)
             {
-                buticon1[i].sprite = playerInfo.weapon[i].GetComponent<ShootMove>().icon;
+                buticon1[i].sprite = playerInfo.weapon[i].GetComponent<WeaponData>().icon;
             }
         }
     }

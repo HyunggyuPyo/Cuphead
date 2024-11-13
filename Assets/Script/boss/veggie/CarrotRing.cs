@@ -26,11 +26,11 @@ public class CarrotRing : MonoBehaviour
 
         for (int i = 0; i < size; i++)
         {
-            GameObject carrotRocket = Instantiate(rocket, spawnPos.position, Quaternion.identity);
-            carrotRocket.SetActive(false);
-            carrotRocket.transform.parent = transform;
-            carrotRocket.transform.localScale = Vector3.one;
-            ringPool.Add(carrotRocket);
+            GameObject carrotRing = Instantiate(rocket, spawnPos.position, Quaternion.identity);
+            carrotRing.SetActive(false);
+            carrotRing.transform.parent = transform;
+            carrotRing.transform.localScale = Vector3.one;
+            ringPool.Add(carrotRing);
         }
     }
 

@@ -5,17 +5,19 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    GameObject main;
-    GameObject weaponA;
-    GameObject weaponB;
-
+    GameObject mainUI;
+    GameObject weaponAUI;
+    GameObject weaponBUI;
+    //public GameObject playerWeapon;
+    WPlayerMove  wPlayerMove;
     private bool onInventory = false;
 
     void Awake()
     {
-        main = transform.GetChild(0).gameObject;
-        weaponA = transform.GetChild(1).gameObject;
-        weaponB = transform.GetChild(2).gameObject;
+        mainUI = transform.GetChild(0).gameObject;
+        weaponAUI = transform.GetChild(1).gameObject;
+        weaponBUI = transform.GetChild(2).gameObject;
+        wPlayerMove = FindObjectOfType<WPlayerMove>();
     }
 
     void Update()
@@ -29,14 +31,16 @@ public class Inventory : MonoBehaviour
         {
             if (onInventory)
             {
-                main.SetActive(false);
-                weaponA.SetActive(false);
-                weaponB.SetActive(false);
+                //wPlayerMove.CanMove();
+                mainUI.SetActive(false);
+                weaponAUI.SetActive(false);
+                weaponBUI.SetActive(false);
                 onInventory = false;
             }
             else
             {
-                main.SetActive(true);
+                //wPlayerMove.CantMove();
+                mainUI.SetActive(true);
                 onInventory = true;
             }
         }

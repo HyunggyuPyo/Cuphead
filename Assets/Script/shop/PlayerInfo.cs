@@ -9,18 +9,22 @@ public class PlayerInfo : MonoBehaviour
     Sprite[] weaponIcon;
     [SerializeField]
     private GameObject normalWeapon;
-    
-    public static int coin { get; private set; }
 
+    public static int coin { get; private set; }
     public static PlayerInfo instance = null;
+
     [HideInInspector]
     public GameObject playerWeapon;
+    public GameObject playerWeaponB;
+
+    public int pDmg;
 
     void Awake()
     {
         if (instance == null)
         {
             instance = this;
+            coin = 0;
         }
         else if (instance != this)
         {
@@ -31,9 +35,9 @@ public class PlayerInfo : MonoBehaviour
 
         weapon = new List<GameObject>(0);
         weapon.Add(normalWeapon);
-        coin = 3;
-
+        
         playerWeapon = normalWeapon;
+        pDmg = playerWeapon.GetComponent<WeaponData>().dmg;
     }
 
     public static bool Pay(int price)
@@ -53,11 +57,12 @@ public class PlayerInfo : MonoBehaviour
     {
         weapon.Add(newWeapon);
     }
+
     void IconArray()
     {
         for (int i = 0; i < weapon.Count; i++)
         {
-            Sprite weaponicon = weapon[i].GetComponent<ShootMove>().icon;
+            Sprite weaponicon = weapon[i].GetComponent<WeaponData>().icon;
             weaponIcon[i] = weaponicon;
         }
     }
@@ -67,5 +72,23 @@ public class PlayerInfo : MonoBehaviour
         IconArray();
 
         return weaponIcon;
+    }
+
+    public static void BonusCoin()
+    {
+        coin = 3;
+    }
+
+    public void WeaponChange(bool change)
+    {
+        if(change == false)
+        {
+            pDmg = playerWeapon.GetComponent<WeaponData>().dmg;
+        }
+        else
+        {
+            pDmg = playerWeaponB.GetComponent<WeaponData>().dmg;
+        }
+        
     }
 }

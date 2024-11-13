@@ -7,7 +7,6 @@ public class WeaponB : MonoBehaviour
 {
     PlayerInfo playerInfo;
     InvenMain invenMain;
-    //Sprite[] icon;
     [SerializeField]
     Image[] buticon1;
 
@@ -26,7 +25,7 @@ public class WeaponB : MonoBehaviour
         {
             if (playerInfo.weapon[i] != null)
             {
-                buticon1[i].sprite = playerInfo.weapon[i].GetComponent<ShootMove>().icon;
+                buticon1[i].sprite = playerInfo.weapon[i].GetComponent<WeaponData>().icon;
             }
         }
     }

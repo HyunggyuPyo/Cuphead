@@ -5,7 +5,7 @@ using UnityEngine;
 public class Onion : MonoBehaviour
 {
     #region
-    private float health =8f; // 양파: 400
+    private float health = 400f; // 양파: 400
     public bool dead = false;
     //private bool firstHit = false;
     Animator onionAnimator;
@@ -16,6 +16,7 @@ public class Onion : MonoBehaviour
     ExplosionPooling fxPool;
     GameManager gameManager;
     public GameObject carrot;
+    PlayerInfo playerInfo;
     #endregion
 
     void Awake()
@@ -25,6 +26,7 @@ public class Onion : MonoBehaviour
         //onionCry = GetComponent<OnionCry>();  
         fxPool = FindObjectOfType<ExplosionPooling>();
         gameManager = FindObjectOfType<GameManager>();
+        playerInfo = FindObjectOfType<PlayerInfo>();
 
         for (int i = 0; i < size; i++)
         {
@@ -53,7 +55,7 @@ public class Onion : MonoBehaviour
     // 보스들 인터페이스 만들어서 상속
     void Hit()
     {
-        health -= 4;
+        health -= playerInfo.pDmg;
         // health -= player.weapon.dmg;
     }
     void Dead()

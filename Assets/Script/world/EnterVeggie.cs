@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class EnterVeggie : MonoBehaviour
 {
@@ -13,13 +12,16 @@ public class EnterVeggie : MonoBehaviour
         Debug.Log("보스 입장 가능");
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            SceneManager.LoadScene("Veggie");
+            LoadSceneController.Instance.LoadScene("Veggie");
         }
     }
 
-    //void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    // 이건 플레이어 코드에 넣어야 함 
-    //    enterUI.SetActive(false);
-    //}
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("보스 입장 가능");
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            LoadSceneController.Instance.LoadScene("Veggie");
+        }
+    }
 }

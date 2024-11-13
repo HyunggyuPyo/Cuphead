@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     #region
-    private int maxHealth = 30;
+    private int maxHealth = 3;
     private int health;
     Animator playerAnimator;
     //private float card = 0;
@@ -87,5 +87,10 @@ public class Player : MonoBehaviour
         spriteColor.a = 1;
         playerSprite.material.color = spriteColor;
         StopCoroutine(playerInvincibility);
+    }
+
+    public int PlayerHP()
+    {
+        return health;
     }
 }

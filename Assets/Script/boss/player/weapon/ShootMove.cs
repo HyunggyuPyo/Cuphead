@@ -12,7 +12,7 @@ public class ShootMove : MonoBehaviour
     Animator weaponAnimator;
     ShootDirection instanceAngle;
     public float cardPiece = 0f;
-    public Sprite icon;
+    //public Sprite icon;
     #endregion
 
     void Awake()

@@ -10,6 +10,7 @@ public class Potato : MonoBehaviour
     Animator potatoAnimator;
     PotatoShoot potatoshoot;
     ExplosionPooling fxPool;
+    PlayerInfo playerInfo;
     public List<SpriteRenderer> spritList;
     public GameObject potato;
     private int size = 4;
@@ -24,6 +25,7 @@ public class Potato : MonoBehaviour
         potatoshoot = FindObjectOfType<PotatoShoot>();
         fxPool = FindObjectOfType<ExplosionPooling>();
         gameManager = FindObjectOfType<GameManager>();
+        playerInfo = FindObjectOfType<PlayerInfo>();
 
         for (int i =0; i < size; i++)
         {
@@ -53,7 +55,7 @@ public class Potato : MonoBehaviour
 
     void Hit()
     {
-        health -= 4f;
+        health -= playerInfo.pDmg;
         // 상점 추가하면 무기 불러와서 해당 무기의 데미지를 -
     }
 

@@ -17,6 +17,23 @@ public class GameOver : MonoBehaviour
     void Update()
     {
         MenuSelect();
+
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+            Debug.Log("누르긴함?");
+            switch(menuCount)
+            {
+                case 1:
+                    ReStart();
+                    break;
+                case 2:
+                    ReturnWorld();
+                    break;
+                case 3:
+                    Exit();
+                    break;
+            }
+        }
     }
 
     public void ReStart()
@@ -29,7 +46,7 @@ public class GameOver : MonoBehaviour
 
     public void ReturnWorld()
     {
-        //SceneManager.LoadScene(0);
+        LoadSceneController.Instance.LoadScene("World");
         // Time.timeScale = 1f;
         Debug.Log("월드맵 이동");
         gameObject.SetActive(false);
@@ -37,7 +54,7 @@ public class GameOver : MonoBehaviour
 
     public void Exit()
     {
-
+        Application.Quit();
         //Time.timeScale = 1f;
         Debug.Log("게임 종료");
         gameObject.SetActive(false);
